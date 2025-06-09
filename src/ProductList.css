@@ -139,6 +139,14 @@ body {
 .tag_home_link h3 {
   font-size: 30px;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
 .tag a {
   text-decoration: none;
 }
@@ -156,12 +164,32 @@ body {
 }
 
 .luxury {
+  width: 650px;
+  font-size: 15px;
+}
+.logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 650px;
-  font-size: 19px;
 }
+.logo-container img {
+  margin-right: 15px;
+}
+.left,
+.center,
+.right {
+  position: absolute;
+}
+.left {
+  left: 20px;
+}
+.right {
+  right: 20px;
+}
+.center {
+  position: relative;
+}
+
 .cart {
   color: white;
   display: flex;
@@ -180,6 +208,7 @@ body {
   /* background-color: yellow; */
 }
 .plant_heading {
+  font-size: x-large;
   width: 400px;
   text-align: center;
   margin: 20px;

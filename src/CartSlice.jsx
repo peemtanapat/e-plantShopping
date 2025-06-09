@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const removeItemLogic = (state, action) => {
+  const toRemoveItemName = action.payload.name;
+  state.items = state.items.filter((item) => item.name != toRemoveItemName);
+};
+
 export const CartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -11,17 +16,22 @@ export const CartSlice = createSlice({
       state.items.push(newItem);
     },
     removeItem: (state, action) => {
-      const toRemoveItemName = action.payload.name;
-      state.items = state.items.filter((item) => item.name != toRemoveItemName);
+      removeItemLogic(state, action);
     },
     updateQuantity: (state, action) => {
       const quantity = action.payload.quantity;
       const targetItemName = action.payload.name;
 
+      if (quantity === 0) {
+        removeItemLogic(state, action);
+        return;
+      }
+
       state.items = state.items.map((item) => {
         if (item.name === targetItemName) {
           return { ...item, quantity };
         }
+        return item;
       });
     },
   },

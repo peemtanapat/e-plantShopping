@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeItem, updateQuantity } from "./CartSlice";
 import "./CartItem.css";
 
-const parseCostToInt = (costStr) => {
-  return parseInt(costStr.replace("$", ""));
+const parseCostToFloat = (costStr) => {
+  return parseFloat(costStr.replace("$", ""));
 };
 
 const CartItem = ({ onContinueShopping }) => {
@@ -15,7 +15,7 @@ const CartItem = ({ onContinueShopping }) => {
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
     const totalCost = cart.reduce((prev, curr) => {
-      const itemCost = parseCostToInt(curr.cost);
+      const itemCost = parseCostToFloat(curr.cost);
       return prev + itemCost * curr.quantity;
     }, 0);
     return totalCost;
@@ -41,7 +41,7 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-    const itemCost = parseCostToInt(item.cost);
+    const itemCost = parseCostToFloat(item.cost);
     return itemCost * item.quantity;
   };
 
